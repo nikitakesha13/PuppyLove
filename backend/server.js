@@ -1,6 +1,6 @@
-import express, { json, static } from "express";
-import cors from 'cors';
-import { connect, connection as _connection } from 'mongoose';
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
 
 require('dotenv').config();
 
@@ -8,22 +8,22 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors());
-app.use(json());
+app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
 console.log(uri);
 
-connect(uri);
-const connection = _connection;
+mongoose.connect(uri);
+const connection = mongoose.connection;
 connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 })
 
-import usersRouter from './routes/users';
-import dogRouter from './routes/dogs';
+const usersRouter = require('./routes/users');
+const dogRouter = require('./routes/dogs');
 app.use('/users', usersRouter);
 app.use('/dogs', dogRouter);
-app.use(static('./frontend/public/'));
+app.use(express.static('./frontend/public/'));
 
 app.listen(port, () => {
   console.log(`Server started on port: ${port}`);
