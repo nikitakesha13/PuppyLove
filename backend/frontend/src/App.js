@@ -13,7 +13,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import {lightTheme, darkTheme, GlobalStyles} from './themes.js';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://puppylove1.herokuapp.com/';
+axios.defaults.baseURL = 'http://localhost:5000';
 // import './App.css';
 
 const StyledApp = styled.div`

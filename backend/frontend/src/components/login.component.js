@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import axios from 'axios';
 
+console.log(axios.defaults.baseURL);
+
 export default class LogIn extends Component {
     constructor(props) {
         super(props);
@@ -37,7 +39,7 @@ export default class LogIn extends Component {
         
         console.log(user);
 
-        axios.post('/login/', user)
+        axios.post('users/login/', user)
             .then(res => {
                 if (res.data.length > 0){
                     localStorage.setItem('user-id', res.data[0]._id);

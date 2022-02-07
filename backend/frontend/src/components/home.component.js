@@ -102,7 +102,7 @@ export default class Home extends Component {
         
         console.log("before the my dogs")
         console.log(localStorage.getItem('user-id'));
-        axios.get('http://localhost:5000/dogs/' + localStorage.getItem('user-id'))
+        axios.get('/dogs/' + localStorage.getItem('user-id'))
             .then(res => {
                 console.log(res.data.name);
                 this.setState({

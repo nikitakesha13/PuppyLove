@@ -47,7 +47,7 @@ export default class AddDog extends Component {
             alert('Please add dog')
         }
         else {
-            axios.post('http://localhost:5000/dogs/add/', dog)
+            axios.post('/dogs/add/', dog)
                 .then(res => console.log(res.data));
         }
     }

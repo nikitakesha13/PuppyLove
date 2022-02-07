@@ -131,7 +131,7 @@ export default class DogSettings extends Component {
     
     
         console.log(formData)
-        axios.post('http://localhost:5000/dogs/add', formData)
+        axios.post('/dogs/add', formData)
             .then(res => {
                 console.log(res.data._id);
                 localStorage.setItem('user-dog-id', res.data._id);
@@ -151,7 +151,7 @@ export default class DogSettings extends Component {
                 const dog_id = {
                     dog_id: res.data._id
                 };
-                axios.post('http://localhost:5000/users/update/' + localStorage.getItem('user-id'), dog_id)
+                axios.post('/users/update/' + localStorage.getItem('user-id'), dog_id)
                     .then(res => {
                         console.log(res.data);
                         // localStorage.setItem('user-dog-id', res.data.dog_id);

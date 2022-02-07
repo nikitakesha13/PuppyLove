@@ -19,7 +19,7 @@ export default class Matches extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/users/matches_user/' + localStorage.getItem('user-id'))
+        axios.get('/users/matches_user/' + localStorage.getItem('user-id'))
             .then(res => {
                 console.log("matches: ", res.data.matches)
                 this.setState({
@@ -27,7 +27,7 @@ export default class Matches extends Component {
                     user: res.data.matches[0],
                 });
                 if (res.data.matches[0]){
-                    axios.get('http://localhost:5000/users/' + res.data.matches[0].user_id)
+                    axios.get('/users/' + res.data.matches[0].user_id)
                         .then(res => {
                             this.setState({
                                 name: res.data.name,
@@ -36,7 +36,7 @@ export default class Matches extends Component {
                         });
                     var user = this.state.user.user_id;
                     console.log("starting user ", user);
-                    axios.get('http://localhost:5000/dogs/' + user)
+                    axios.get('/dogs/' + user)
                         .then(res =>  { 
                             console.log("initial dog: ", res.data)
                             this.setState({
@@ -54,14 +54,14 @@ export default class Matches extends Component {
             i = 0;
         }
         var user = this.state.matches[i].user_id;
-        axios.get('http://localhost:5000/users/' + user)
+        axios.get('/users/' + user)
             .then(res => {
                 this.setState({
                     name: res.data.name,
                     email: res.data.email
                 });
             });
-        axios.get('http://localhost:5000/dogs/' + user)
+        axios.get('/dogs/' + user)
             .then(res =>  { 
                 console.log("users dogs: ", res.data)
                 this.setState({
@@ -77,7 +77,7 @@ export default class Matches extends Component {
             matches: this.state.matches[this.state.counter],
             push: 'false'
         }
-        axios.post('http://localhost:5000/users/update/' + localStorage.getItem('user-id'), match)
+        axios.post('/users/update/' + localStorage.getItem('user-id'), match)
             .then(res => {
                 console.log(res.data);
                 window.location.reload();
