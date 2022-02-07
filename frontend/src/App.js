@@ -13,7 +13,8 @@ import styled, { ThemeProvider } from 'styled-components';
 import {lightTheme, darkTheme, GlobalStyles} from './themes.js';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:5000';
+// axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = window.origin;
 // import './App.css';
 
 const StyledApp = styled.div`
