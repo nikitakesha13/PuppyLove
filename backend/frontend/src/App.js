@@ -11,6 +11,9 @@ import Accessibility from './components/accessibility.component';
 import DogSettings from './components/dogsettings.component';
 import styled, { ThemeProvider } from 'styled-components';
 import {lightTheme, darkTheme, GlobalStyles} from './themes.js';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'https://puppylove1.herokuapp.com/';
 // import './App.css';
 
 const StyledApp = styled.div`

@@ -37,7 +37,7 @@ export default class LogIn extends Component {
         
         console.log(user);
 
-        axios.post('http://localhost:5000/users/login/', user)
+        axios.post('/login/', user)
             .then(res => {
                 if (res.data.length > 0){
                     localStorage.setItem('user-id', res.data[0]._id);
