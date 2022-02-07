@@ -14,7 +14,7 @@ app.use(express.json());
 const dirname = path.resolve();
 // console.log(dirname);
 
-app.use(express.static(path.join(dirname, "/frontend/build")));
+app.use(express.static("frontend/build"));
 
 const uri = process.env.ATLAS_URI;
 console.log(uri);
@@ -31,7 +31,7 @@ app.use('/users', usersRouter);
 app.use('/dogs', dogRouter);
 // app.use(express.static('./frontend/public/'));
 
-app.get('/', (req, res) => res.sendFile(path.resolve(dirname, "frontend/build", "index.html")));
+app.get('*', (req, res) => res.sendFile(path.join(dirname + "/frontend/build/index.html")));
 
 app.listen(port, () => {
   console.log(`Server started on port: ${port}`);
